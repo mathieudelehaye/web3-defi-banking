@@ -4,12 +4,17 @@ import Time "mo:base/Time";
 
 actor DBank {
   stable var currentValue: Float = 300;
-  // currentValue := 300;  // uncomment and deploy to reset stable variables 
-
   stable var startTime = Time.now();
-  // startTime := Time.now();  // uncomment and deploy to reset stable variables 
-
+  
+  // Uncomment to reset current value and time
+  // reset();
+  Debug.print(debug_show(currentValue));
   Debug.print(debug_show(startTime));
+
+  func reset() {
+    currentValue := 300;  
+    startTime := Time.now();
+  };
 
   public func topUp(amount: Float) {
     currentValue += amount;
@@ -33,8 +38,18 @@ actor DBank {
   public func compound() {
     let currentTime = Time.now();
     let timeElapsedNS = currentTime - startTime;
-    let timeElaspedS = timeElapsedNS / 1000000000;
-    currentValue := currentValue * (1.01 ** Float.fromInt(timeElaspedS));
+    
+    // Interest rate compounded every 10 second
+    let timeElasped10S = timeElapsedNS / 10000000000;
+    Debug.print(debug_show(timeElasped10S));
+    currentValue := currentValue * (1.01 ** Float.fromInt(timeElasped10S));
+    
     startTime := currentTime;
+
+    // Reset if current value > threshold
+    if (currentValue > 10000) {
+      Debug.print("Reset current value.");
+      reset()
+    }
   };
 }
