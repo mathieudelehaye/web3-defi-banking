@@ -3,9 +3,10 @@ import { fileURLToPath, URL } from 'url';
 import environment from 'vite-plugin-environment';
 import dotenv from 'dotenv';
 
+// Load environment variables from the .env file
 dotenv.config({ path: '../../.env' });
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   build: {
     emptyOutDir: true,
   },
@@ -25,6 +26,11 @@ export default defineConfig({
     },
   },
   publicDir: "assets",
+  define: {
+    'import.meta.env.CANISTER_ID_DBANK_BACKEND': JSON.stringify(process.env.CANISTER_ID_DBANK_BACKEND),
+    'import.meta.env.CANISTER_ID_DBANK_FRONTEND': JSON.stringify(process.env.CANISTER_ID_DBANK_FRONTEND),
+    'import.meta.env.DFX_NETWORK': JSON.stringify(process.env.DFX_NETWORK),
+  },
   plugins: [
     environment("all", { prefix: "CANISTER_" }),
     environment("all", { prefix: "DFX_" }),
@@ -39,4 +45,4 @@ export default defineConfig({
       },
     ],
   },
-});
+}));
