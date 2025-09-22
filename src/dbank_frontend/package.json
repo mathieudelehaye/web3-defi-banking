@@ -6,9 +6,10 @@
   "scripts": {
     "setup": "npm i && dfx canister create dbank_backend && dfx generate dbank_backend && dfx deploy",
     "start": "vite --port 3000",
-    "prebuild": "dfx generate",
+    "prebuild": "dfx generate && npm run fix-declarations",
     "build": "tsc && vite build",
-    "format": "prettier --write \"src/**/*.{json,js,jsx,ts,tsx,css,scss}\""
+    "format": "prettier --write \"src/**/*.{json,js,jsx,ts,tsx,css,scss}\"",
+    "fix-declarations": "node ../scripts/fix-declarations.js"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",
