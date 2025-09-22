@@ -1,13 +1,14 @@
 import Debug "mo:base/Debug";
 import Float "mo:base/Float";
 import Time "mo:base/Time";
- 
+
 actor DBank {
   stable var currentValue: Float = 300;
-  // currentValue := 300; // uncomment and deploy to resest stable variable
+  // currentValue := 300;  // uncomment and deploy to reset stable variables 
 
   stable var startTime = Time.now();
-  // startTime = Time.now();  // uncomment and deploy to resest stable variable
+  // startTime := Time.now();  // uncomment and deploy to reset stable variables 
+
   Debug.print(debug_show(startTime));
 
   public func topUp(amount: Float) {
