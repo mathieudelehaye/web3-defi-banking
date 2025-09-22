@@ -8,8 +8,8 @@ actor DBank {
   
   // Uncomment to reset current value and time
   // reset();
-  Debug.print(debug_show(currentValue));
-  Debug.print(debug_show(startTime));
+  Debug.print("Account value: " # debug_show(currentValue));
+  Debug.print("Start time: " # debug_show(startTime));
 
   func reset() {
     currentValue := 300;  
@@ -18,14 +18,14 @@ actor DBank {
 
   public func topUp(amount: Float) {
     currentValue += amount;
-    Debug.print(debug_show(currentValue));
+    Debug.print("Account value after topping up: " # debug_show(currentValue));
   };
   
   public func withdraw(amount: Float) {
     let compValue: Float = currentValue - amount;
     if (compValue >= 0) {
       currentValue -= amount;
-      Debug.print(debug_show(currentValue));
+      Debug.print("Account value after withdrawing: " # debug_show(currentValue));
     } else {
       Debug.print("Error: amount too large, current value less than zero.");
     }
@@ -40,9 +40,10 @@ actor DBank {
     let timeElapsedNS = currentTime - startTime;
     
     // Interest rate compounded every 10 second
-    let timeElasped10S = timeElapsedNS / 10000000000;
-    Debug.print(debug_show(timeElasped10S));
-    currentValue := currentValue * (1.01 ** Float.fromInt(timeElasped10S));
+    let interestPeriodS = 10;
+    let timeElaspedS = timeElapsedNS / 1000000000 / interestPeriodS;
+    Debug.print("Time elapsed since last compounding [sec]: " # debug_show(timeElaspedS*interestPeriodS));
+    currentValue := currentValue * (1.01 ** Float.fromInt(timeElaspedS));
     
     startTime := currentTime;
 
