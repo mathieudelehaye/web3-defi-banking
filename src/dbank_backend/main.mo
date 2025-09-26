@@ -47,7 +47,7 @@ actor DBank {
     return {rate = interestRate; periodSec = periodSeconds};
   };
 
-  public func compound() {
+  public func compound() : async Text {
     let currentTime = Time.now();
     let timeElapsedNS = currentTime - startTime;
 
@@ -60,7 +60,10 @@ actor DBank {
     // Reset if current value > threshold
     if (currentValue > 10000) {
       Debug.print("Reset current value.");
-      reset()
+      reset();
+      return "Balance was reset to $300 because it exceeded $10,000"
+    } else {
+      return "Interest compounded successfully"
     }
   };
 }

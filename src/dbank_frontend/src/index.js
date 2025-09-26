@@ -41,7 +41,11 @@ document.querySelector("form").addEventListener("submit", async function(event) 
         await dbank.withdraw(withdrawalAmount);
     }
 
-    await dbank.compound();
+    const compoundResult = await dbank.compound();
+
+    if (compoundResult && compoundResult.includes("reset")) {
+        alert(compoundResult);
+    }
 
     update();
 
