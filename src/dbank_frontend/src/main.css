@@ -40,7 +40,8 @@ form {
 }
 
 input,
-textarea {
+textarea,
+select {
   position: relative;
   text-align: center;
   display: block;
@@ -57,7 +58,8 @@ textarea {
 }
 
 input:focus,
-textarea:focus {
+textarea:focus,
+select:focus {
   outline: none;
   border: 2px #617BFF solid;
 }
@@ -76,10 +78,20 @@ input[name="amount"] {
   font-weight: 600;
 }
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
+input[type=number]:not(#interest-rate)::-webkit-inner-spin-button,
+input[type=number]:not(#interest-rate)::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+#interest-rate::-webkit-inner-spin-button,
+#interest-rate::-webkit-outer-spin-button {
+  -webkit-appearance: auto;
+  margin: 0;
+}
+
+#periodicity {
+  text-align: left;
 }
 
 #submit-btn {
@@ -113,6 +125,29 @@ textarea[name="address"] {
   font-weight: 600;
   padding: 10px 2.7rem;
   font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+.interest-config {
+  margin-bottom: 2px;
+}
+
+.config-row {
+  display: flex;
+  gap: 10px;
+}
+
+.config-item {
+  flex: 1;
+}
+
+.interest-config label {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 12px;
+  font-weight: 500;
+  display: block;
+  text-align: left;
+  margin-bottom: 5px;
+  margin-top: 10px;
 }
 
 footer {

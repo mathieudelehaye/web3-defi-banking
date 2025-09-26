@@ -5,6 +5,8 @@ import Time "mo:base/Time";
 actor DBank {
   stable var currentValue: Float = 300;
   stable var startTime = Time.now();
+  stable var interestRate: Float = 1.01; // Default 1% per period
+  stable var periodSeconds: Int = 10; // Default 10 seconds
   
   // Uncomment to reset current value and time
   // reset();
@@ -35,16 +37,24 @@ actor DBank {
     return currentValue;
   };
 
+  public func setInterestConfig(rate: Float, periodSec: Int) {
+    interestRate := rate;
+    periodSeconds := periodSec;
+    Debug.print("Interest config updated - Rate: " # debug_show(rate) # ", Period: " # debug_show(periodSec) # "s");
+  };
+
+  public query func getInterestConfig(): async {rate: Float; periodSec: Int} {
+    return {rate = interestRate; periodSec = periodSeconds};
+  };
+
   public func compound() {
     let currentTime = Time.now();
     let timeElapsedNS = currentTime - startTime;
-    
-    // Interest rate compounded every 10 second
-    let interestPeriodS = 10;
-    let timeElaspedS = timeElapsedNS / 1000000000 / interestPeriodS;
-    Debug.print("Time elapsed since last compounding [sec]: " # debug_show(timeElaspedS*interestPeriodS));
-    currentValue := currentValue * (1.01 ** Float.fromInt(timeElaspedS));
-    
+
+    let timeElaspedS = timeElapsedNS / 1000000000 / periodSeconds;
+    Debug.print("Time elapsed since last compounding [sec]: " # debug_show(timeElaspedS*periodSeconds));
+    currentValue := currentValue * (interestRate ** Float.fromInt(timeElaspedS));
+
     startTime := currentTime;
 
     // Reset if current value > threshold
