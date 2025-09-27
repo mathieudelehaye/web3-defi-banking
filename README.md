@@ -1,6 +1,39 @@
-# `dbank`
+# DBank - Digital Banking Application
 
-Welcome to your new `dbank` project and to the Internet Computer development community. By default, creating a new project adds this README and some template files to your project directory. You can edit these template files to customize your project and to include your own code to speed up the development cycle.
+A smart digital banking solution built on the Internet Computer with configurable interest rates and automatic compounding.
+
+## Live Deployment
+
+- **Frontend**: https://looso-6qaaa-aaaaj-qns6q-cai.icp0.io/
+- **Backend**: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=ljpu2-tiaaa-aaaaj-qns6a-cai
+
+## Screenshots
+
+![Main Interface](screenshots/screenshot_01.png)
+*Main banking interface with balance display and transaction controls*
+
+![Interest Configuration](screenshots/screenshot_02.png)
+*Configurable interest rates and compounding periods*
+
+![Onboarding Tutorial](screenshots/screenshot_03.png)
+*Interactive onboarding tutorial for new users*
+
+![Transaction Features](screenshots/screenshot_04.png)
+*Easy top-up and withdrawal functionality*
+
+![Complete Interface](screenshots/screenshot_05.png)
+*Complete application overview*
+
+## What DBank Does
+
+DBank is your digital banking solution that provides:
+
+- **Real-time Balance Tracking**: View your current balance with automatic updates
+- **Configurable Interest**: Set custom interest rates and compounding periods to grow your money
+- **Easy Transactions**: Top up your account or withdraw funds with simple, secure transactions
+- **Automatic Reset**: Your account balance automatically resets when reaching approximately $10,000
+
+The application features an interactive onboarding tutorial that explains all features to new users.
 
 To get started, you might want to explore the project directory structure and the default configuration file. Working with this project in your development environment will not affect any production deployment or identity tokens.
 
