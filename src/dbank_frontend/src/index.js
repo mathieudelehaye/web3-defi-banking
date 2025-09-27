@@ -1,4 +1,5 @@
 import { dbank_backend as dbank } from "../../declarations/dbank_backend"
+import { showOnboardingModal } from "./onboarding"
 
 async function update() {
     const currentAmount = await dbank.checkBalance();
@@ -14,6 +15,11 @@ async function update() {
 window.addEventListener("load", async function() {
     // console.log("Finished loading");
     update();
+
+    // Check if it's the user's first visit
+    if (!localStorage.getItem('dbank_onboarded')) {
+        showOnboardingModal();
+    }
 });
 
 document.querySelector("form").addEventListener("submit", async function(event) {

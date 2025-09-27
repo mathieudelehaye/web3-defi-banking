@@ -6,10 +6,101 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link type="text/css" rel="stylesheet" href="src/main.css" />
+    <link type="text/css" rel="stylesheet" href="src/onboarding.css" />
     <link rel="icon" type="image/x-icon" href="favicon.ico">
   </head>
 
   <body>
+    <!-- Onboarding Modal -->
+    <div id="onboarding-modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal-body">
+          <div class="onboarding-step active" data-step="1">
+            <div class="step-content">
+              <div class="animation-container">
+                <div class="dbank-logo-animation">
+                  <img src="dbank_logo.png" alt="DBank" width="120"/>
+                </div>
+              </div>
+              <h2>Welcome to DBank!</h2>
+              <p>Your digital banking solution with smart interest management</p>
+              <div class="copyright">&copy; 2025 Mathieu Delehaye</div>
+            </div>
+          </div>
+
+          <div class="onboarding-step" data-step="2">
+            <div class="step-content">
+              <div class="logo-small">
+                <img src="dbank_logo.png" alt="DBank" width="60"/>
+              </div>
+              <div class="animation-container">
+                <div class="feature-animation balance-animation">
+                  <div class="balance-display">$234</div>
+                  <div class="pulse-ring"></div>
+                </div>
+              </div>
+              <h2>Track Your Balance</h2>
+              <p>View your current balance in real-time with automatic updates</p>
+              <div class="copyright">&copy; 2025 Mathieu Delehaye</div>
+            </div>
+          </div>
+
+          <div class="onboarding-step" data-step="3">
+            <div class="step-content">
+              <div class="logo-small">
+                <img src="dbank_logo.png" alt="DBank" width="60"/>
+              </div>
+              <div class="animation-container">
+                <div class="feature-animation interest-animation">
+                  <div class="interest-icon">%</div>
+                  <div class="growing-bar"></div>
+                </div>
+              </div>
+              <h2>Configure Interest</h2>
+              <p>Set custom interest rates and compounding periods to grow your money</p>
+              <div class="copyright">&copy; 2025 Mathieu Delehaye</div>
+            </div>
+          </div>
+
+          <div class="onboarding-step" data-step="4">
+            <div class="step-content">
+              <div class="logo-small">
+                <img src="dbank_logo.png" alt="DBank" width="60"/>
+              </div>
+              <div class="animation-container">
+                <div class="feature-animation transaction-animation">
+                  <div class="coin-stack">
+                    <div class="coin"></div>
+                    <div class="coin"></div>
+                    <div class="coin"></div>
+                  </div>
+                  <div class="arrow-flow"></div>
+                </div>
+              </div>
+              <h2>Easy Transactions</h2>
+              <p>Top up your account or withdraw funds with simple, secure transactions</p>
+              <div class="copyright">&copy; 2025 Mathieu Delehaye</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <div class="step-indicators">
+            <span class="dot active" data-step="1"></span>
+            <span class="dot" data-step="2"></span>
+            <span class="dot" data-step="3"></span>
+            <span class="dot" data-step="4"></span>
+          </div>
+          <div class="modal-buttons">
+            <button id="prev-btn" style="display: none;">Previous</button>
+            <button id="next-btn">Next</button>
+            <button id="start-btn" style="display: none;">Get Started</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="container">
       <img src="dbank_logo.png" alt="DBank logo" width="230"/>
       <h1>Current Balance: $<span id="value">234</span></h1>
@@ -43,8 +134,9 @@
       </form>
     </div>
     <footer>
-      <p>&copy; 2025 Mathieu Delehaye</p>
+      <p>&copy; 2025 Mathieu Delehaye | <a href="#" id="help-link">Show tutorial</a></p>
     </footer>
+    <script type="module" src="src/onboarding.js"></script>
     <script type="module" src="src/index.js"></script>
   </body>
 
