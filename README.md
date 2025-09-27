@@ -1,6 +1,6 @@
 # DBank - Digital Banking Application
 
-A smart digital banking solution built on the Internet Computer with configurable interest rates and automatic compounding.
+A smart digital Web3 banking solution built on the Internet Computer blockchain with configurable interest rates and automatic compounding.
 
 ## Live Deployment
 
